@@ -36,7 +36,7 @@
 </head>
 <body>
 
-    <h1>Countdown to 10 PM</h1>
+    <h1>Countdown to 11 PM</h1>
     <div class="countdown">Calculating time...</div>
     <div class="content">
         <div class="section">
@@ -64,17 +64,17 @@
             const currentSecond = now.getSeconds();
 
             let hoursLeft = 22 - currentHour;
-            let minutesLeft = 29 - currentMinute;
+            let minutesLeft = 59 - currentMinute;
             let secondsLeft = 59 - currentSecond;
 
             if (hoursLeft < 0) {
-                document.querySelector('.countdown').textContent = "It's already 10 PM";
+                document.querySelector('.countdown').textContent = "It's already 11 PM";
                 document.querySelector('.content').style.display = 'block';
                 return;
             }
 
             if (hoursLeft <= 0 && minutesLeft <= 0 && secondsLeft <= 0) {
-                document.querySelector('.countdown').textContent = "It's 10 PM !";
+                document.querySelector('.countdown').textContent = "It's 11 PM !";
                 document.querySelector('.content').style.display = 'block';
             } else {
                 const countdownText = `Time left : ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
