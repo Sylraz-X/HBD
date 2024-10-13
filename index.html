@@ -68,16 +68,16 @@
             let secondsLeft = 59 - currentSecond;
 
             if (hoursLeft < 0) {
-                document.querySelector('.countdown').textContent = "It's already 22:00";
+                document.querySelector('.countdown').textContent = "It's already 10 PM";
                 document.querySelector('.content').style.display = 'block';
                 return;
             }
 
             if (hoursLeft <= 0 && minutesLeft <= 0 && secondsLeft <= 0) {
-                document.querySelector('.countdown').textContent = "It's 20:00 !";
+                document.querySelector('.countdown').textContent = "It's 10 PM !";
                 document.querySelector('.content').style.display = 'block';
             } else {
-                const countdownText = `Time left: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+                const countdownText = `Time left : ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
                 document.querySelector('.countdown').textContent = countdownText;
             }
         }
