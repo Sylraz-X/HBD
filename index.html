@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Example</title>
     <style>
-        /* คงสไตล์ตามที่คุณมี */
         html, body {
             margin: 0;
             padding: 0;
@@ -26,7 +25,7 @@
         }
 
         .content {
-            display: none; /* ซ่อนข้อความไว้ก่อน */
+            display: none;
         }
 
         .countdown {
@@ -64,18 +63,18 @@
             const currentMinute = now.getMinutes();
             const currentSecond = now.getSeconds();
 
-            let hoursLeft = 21 - currentHour; // 22:00 น. คือ 21 นาฬิกาสำหรับการนับ
+            let hoursLeft = 21 - currentHour;
             let minutesLeft = 59 - currentMinute;
             let secondsLeft = 59 - currentSecond;
 
             if (hoursLeft < 0) {
-                document.querySelector('.countdown').textContent = "It's already 10 PM!";
+                document.querySelector('.countdown').textContent = "It's already 22:00";
                 document.querySelector('.content').style.display = 'block';
                 return;
             }
 
             if (hoursLeft <= 0 && minutesLeft <= 0 && secondsLeft <= 0) {
-                document.querySelector('.countdown').textContent = "It's 10 PM!";
+                document.querySelector('.countdown').textContent = "It's 20:00 !";
                 document.querySelector('.content').style.display = 'block';
             } else {
                 const countdownText = `Time left: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
@@ -83,7 +82,7 @@
             }
         }
 
-        setInterval(updateCountdown, 1000); // อัพเดทนับถอยหลังทุกๆ วินาที
+        setInterval(updateCountdown, 1000);
     </script>
 
 </body>
