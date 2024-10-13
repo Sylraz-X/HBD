@@ -177,6 +177,9 @@
         </div>
     </div>
 
+    <!-- Spotify Embed -->
+    <iframe style="margin-top: 20px;" src="https://open.spotify.com/embed/track/7rbECVPkY5UODxoOUVKZnA?utm_source=generator" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -204,7 +207,7 @@
             circle.style.left = event.pageX - size / 2 + 'px';
             circle.style.top = event.pageY - size / 2 + 'px';
             setTimeout(() => {
-                circle.remove();
+                document.body.removeChild(circle);
             }, 500);
         });
 
@@ -212,5 +215,6 @@
             link.classList.add('clicked');
         }
     </script>
+
 </body>
 </html>
