@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>What the website ?</title>
+    <title>HBD</title>
     <style>
         html, body {
             margin: 0;
@@ -177,6 +177,8 @@
         </div>
     </div>
 
+    <iframe style="margin-top: 20px;" src="https://open.spotify.com/embed/track/6uMGHQvhZq8YyT4kdnG1L3?utm_source=generator" width="30%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -204,3 +206,13 @@
             circle.style.left = event.pageX - size / 2 + 'px';
             circle.style.top = event.pageY - size / 2 + 'px';
             setTimeout(() => {
+                document.body.removeChild(circle);
+            }, 500);
+        });
+
+        function fadeLink(link) {
+            link.classList.add('clicked');
+        }
+    </script>
+</body>
+</html>
