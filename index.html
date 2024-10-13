@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Example</title>
+    <title>What the website ?</title>
     <style>
         html, body {
             margin: 0;
@@ -24,20 +24,17 @@
             user-select: none;
         }
 
-        .content {
+        .countdown {
             display: none;
         }
 
-        .countdown {
-            font-size: 25px;
-            color: white;
+        .content {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h1>Countdown to 11 PM</h1>
-    <div class="countdown">Calculating time...</div>
     <div class="content">
         <div class="section">
             <h1>Who?</h1>
@@ -55,35 +52,6 @@
             <h3>May all your dreams come true on your special day.</h3>
         </div>
     </div>
-
-    <script>
-        function updateCountdown() {
-            const now = new Date();
-            const currentHour = now.getHours();
-            const currentMinute = now.getMinutes();
-            const currentSecond = now.getSeconds();
-
-            let hoursLeft = 21 - currentHour;
-            let minutesLeft = 20 - currentMinute;
-            let secondsLeft = 59 - currentSecond;
-
-            if (hoursLeft < 0) {
-                document.querySelector('.countdown').textContent = "It's already 11 PM";
-                document.querySelector('.content').style.display = 'block';
-                return;
-            }
-
-            if (hoursLeft <= 0 && minutesLeft <= 0 && secondsLeft <= 0) {
-                document.querySelector('.countdown').textContent = "It's 11 PM !";
-                document.querySelector('.content').style.display = 'block';
-            } else {
-                const countdownText = `Time left : ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
-                document.querySelector('.countdown').textContent = countdownText;
-            }
-        }
-
-        setInterval(updateCountdown, 1000);
-    </script>
 
 </body>
 </html>
