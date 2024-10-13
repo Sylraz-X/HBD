@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>What the website?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Example</title>
     <style>
+        /* คงสไตล์ตามที่คุณมี */
         html, body {
             margin: 0;
             padding: 0;
@@ -24,141 +26,19 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.025);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgb(23, 159, 201, 0.8);
-            max-width: 700px;
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            display: none; /* ซ่อนข้อความไว้ก่อน */
         }
 
-        .section {
-            width: 45%;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 35px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h3 {
+        .countdown {
+            font-size: 25px;
             color: white;
-        }
-
-        p, ul {
-            font-size: 19px;
-            text-align: center;
-            margin: 0 auto;
-            padding: 0;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px 0;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        a:hover {
-            color: #179fc9;
-            text-decoration: none;
-        }
-
-        a:active {
-            color: #585858;
-        }
-
-        a.clicked {
-            animation: fadeIn 1.5s forwards;
-            pointer-events: none;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: transparent;
-            border: 8px solid rgba(23, 159, 201, 0.8);
-            transform: scale(0);
-            animation: expandFade 0.5s ease-out forwards;
-            pointer-events: none;
-        }
-
-        @keyframes expandFade {
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        @media screen and (max-width: 1080px) {
-            h1 {
-                font-size: 34px;
-            }
-
-            p, ul {
-                font-size: 18px;
-            }
-
-            li {
-                margin: 9px 0;
-            }
-
-            .content {
-                max-width: 90%;
-                padding: 15px;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            h1 {
-                font-size: 30px;
-            }
-
-            p, ul {
-                font-size: 16px;
-            }
-
-            li {
-                margin: 8px 0;
-            }
-
-            .content {
-                max-width: 95%;
-                padding: 10px;
-                flex-direction: column;
-            }
-
-            .section {
-                width: 100%;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>HBD for you</h1>
+
+    <h1>Countdown to 10 PM</h1>
+    <div class="countdown">Calculating time...</div>
     <div class="content">
         <div class="section">
             <h1>Who?</h1>
@@ -166,7 +46,7 @@
 
             <h1>Social Media</h1>
             <ul>
-                <li><a href="https://www.facebook.com/nanon.stang" onclick="fadeLink(this)">Facebook</a></li>
+                <li><a href="https://www.facebook.com/nanon.stang">Facebook</a></li>
             </ul>
         </div>
 
@@ -177,42 +57,34 @@
         </div>
     </div>
 
-    <iframe style="margin-top: 20px;" src="https://open.spotify.com/embed/track/6uMGHQvhZq8YyT4kdnG1L3?utm_source=generator" width="30%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-
     <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+        function updateCountdown() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentSecond = now.getSeconds();
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-                e.preventDefault();
+            let hoursLeft = 21 - currentHour; // 22:00 น. คือ 21 นาฬิกาสำหรับการนับ
+            let minutesLeft = 59 - currentMinute;
+            let secondsLeft = 59 - currentSecond;
+
+            if (hoursLeft < 0) {
+                document.querySelector('.countdown').textContent = "It's already 10 PM!";
+                document.querySelector('.content').style.display = 'block';
+                return;
             }
-        });
 
-        document.addEventListener('mousedown', function(e) {
-            if (e.button === 0) {
-                e.preventDefault();
+            if (hoursLeft <= 0 && minutesLeft <= 0 && secondsLeft <= 0) {
+                document.querySelector('.countdown').textContent = "It's 10 PM!";
+                document.querySelector('.content').style.display = 'block';
+            } else {
+                const countdownText = `Time left: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+                document.querySelector('.countdown').textContent = countdownText;
             }
-        });
-
-        document.addEventListener('click', (event) => {
-            const circle = document.createElement('div');
-            circle.className = 'circle';
-            document.body.appendChild(circle);
-            const size = Math.random() * 50 + 50;
-            circle.style.width = size + 'px';
-            circle.style.height = size + 'px';
-            circle.style.left = event.pageX - size / 2 + 'px';
-            circle.style.top = event.pageY - size / 2 + 'px';
-            setTimeout(() => {
-                document.body.removeChild(circle);
-            }, 500);
-        });
-
-        function fadeLink(link) {
-            link.classList.add('clicked');
         }
+
+        setInterval(updateCountdown, 1000); // อัพเดทนับถอยหลังทุกๆ วินาที
     </script>
+
 </body>
 </html>
