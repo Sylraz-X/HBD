@@ -63,9 +63,9 @@
             const currentMinute = now.getMinutes();
             const currentSecond = now.getSeconds();
 
-            let hoursLeft = 21 - currentHour;
-            let minutesLeft = 59 - currentMinute;
-            let secondsLeft = 59 - currentSecond;
+            let hoursLeft = 22 - currentHour;
+            let minutesLeft = 30 - currentMinute;
+            let secondsLeft = 00 - currentSecond;
 
             if (hoursLeft < 0) {
                 document.querySelector('.countdown').textContent = "It's already 10 PM";
